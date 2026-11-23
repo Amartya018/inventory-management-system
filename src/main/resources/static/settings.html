@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <h2>📦 INVENTORY SYSTEM</h2>
+
+        <ul>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-box"></i> Products</a></li>
+            <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+            <li><a href="suppliers.html"><i class="fa-solid fa-truck"></i> Suppliers</a></li>
+            <li><a href="customers.html"><i class="fa-solid fa-user-group"></i> Customers</a></li>
+            <li><a href="sales.html"><i class="fa-solid fa-cart-shopping"></i> Sales & Invoices</a></li>
+            <li><a href="purchases.html"><i class="fa-solid fa-dolly"></i> Purchase Orders</a></li>
+            <li><a href="stock.html"><i class="fa-solid fa-warehouse"></i> Stock Movements</a></li>
+            <li><a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+            <li class="active"><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+
+        <header>
+            <h1>Application & User Settings</h1>
+            <p>Manage session credentials, interface theme and system configuration</p>
+        </header>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- Profile Card -->
+            <div class="card">
+                <h3 style="margin-bottom: 20px; color:#1f2937;"><i class="fa-solid fa-id-badge" style="color:#2563eb;"></i> User Account Details</h3>
+
+                <div style="margin-bottom: 15px;">
+                    <span style="font-size:12px; color:#6b7280; font-weight:bold; display:block;">FULL NAME</span>
+                    <strong id="profileName" style="font-size:16px; color:#1f2937;">Loading...</strong>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <span style="font-size:12px; color:#6b7280; font-weight:bold; display:block;">EMAIL ADDRESS</span>
+                    <strong id="profileEmail" style="font-size:15px; color:#1f2937;">Loading...</strong>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <span style="font-size:12px; color:#6b7280; font-weight:bold; display:block;">SECURITY ROLE</span>
+                    <span id="profileRole" style="display:inline-block; margin-top:4px; background:#e0e7ff; color:#3730a3; padding:4px 12px; border-radius:12px; font-size:13px; font-weight:bold;">STAFF</span>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #e5e7eb; margin-bottom:20px;">
+
+                <div style="display:flex; gap:10px;">
+                    <button id="themeBtn" style="padding:10px 18px; background:#4b5563; font-size:14px;">
+                        🌙 Enable Dark Mode
+                    </button>
+
+                    <button onclick="logout()" style="padding:10px 18px; background:#dc2626; font-size:14px;">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Info Card -->
+            <div class="card">
+                <h3 style="margin-bottom: 20px; color:#1f2937;"><i class="fa-solid fa-server" style="color:#2563eb;"></i> System Architecture</h3>
+
+                <div style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
+                        <span style="color:#6b7280;">Backend:</span>
+                        <strong>Java 21 / Spring Boot 3.2</strong>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
+                        <span style="color:#6b7280;">Database:</span>
+                        <strong>MySQL 8 (Hibernate JPA)</strong>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
+                        <span style="color:#6b7280;">Security:</span>
+                        <strong>Spring Security 6 (JWT / BCrypt)</strong>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
+                        <span style="color:#6b7280;">Frontend:</span>
+                        <strong>Pure HTML5 / CSS3 / JavaScript (Fetch API)</strong>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:6px;">
+                        <span style="color:#6b7280;">Session Expiration:</span>
+                        <strong>24 Hours (Stateless Bearer JWT)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>

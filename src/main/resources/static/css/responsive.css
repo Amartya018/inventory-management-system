@@ -1,0 +1,93 @@
+/* ===== Tablets ===== */
+@media (max-width: 992px) {
+
+.container{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    height:auto;
+}
+
+.cards{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.form{
+    grid-template-columns:repeat(2,1fr);
+}
+
+table{
+    font-size:14px;
+}
+
+}
+
+/* ===== Mobile ===== */
+@media (max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:15px;
+}
+
+.navbar ul{
+    flex-direction:column;
+    width:100%;
+    text-align:center;
+}
+
+.cards{
+    grid-template-columns:1fr;
+}
+
+.form{
+    grid-template-columns:1fr;
+}
+
+#search{
+    width:100%;
+}
+
+.main{
+    padding:15px;
+}
+
+table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+}
+
+/* ===== Small Mobile ===== */
+
+@media (max-width:480px){
+
+.hero h1{
+    font-size:32px;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+.sidebar h2{
+    font-size:20px;
+}
+
+.card{
+    padding:15px;
+}
+
+button{
+    width:100%;
+}
+
+input{
+    width:100%;
+}
+
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers | Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <h2>📦 INVENTORY SYSTEM</h2>
+
+        <ul>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-box"></i> Products</a></li>
+            <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+            <li><a href="suppliers.html"><i class="fa-solid fa-truck"></i> Suppliers</a></li>
+            <li class="active"><a href="customers.html"><i class="fa-solid fa-user-group"></i> Customers</a></li>
+            <li><a href="sales.html"><i class="fa-solid fa-cart-shopping"></i> Sales & Invoices</a></li>
+            <li><a href="purchases.html"><i class="fa-solid fa-dolly"></i> Purchase Orders</a></li>
+            <li><a href="stock.html"><i class="fa-solid fa-warehouse"></i> Stock Movements</a></li>
+            <li><a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+
+        <header>
+            <h1>Customer Management</h1>
+            <p>Maintain customer profiles, corporate accounts and contact directories</p>
+        </header>
+
+        <div class="card" style="margin-bottom: 25px;">
+            <h3 id="formTitle" style="margin-bottom: 15px; color:#1f2937;"><i class="fa-solid fa-user-plus" style="color:#2563eb;"></i> Add New Customer</h3>
+            <form id="customerForm">
+                <div class="form" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">CUSTOMER NAME / COMPANY *</label>
+                        <input type="text" id="customerName" placeholder="e.g. Acme Tech Corp" required style="width:100%;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">EMAIL ADDRESS</label>
+                        <input type="email" id="customerEmail" placeholder="client@acme.com" style="width:100%;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">PHONE NUMBER</label>
+                        <input type="text" id="customerPhone" placeholder="+1-555-1001" style="width:100%;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">DELIVERY / BILLING ADDRESS</label>
+                        <input type="text" id="customerAddress" placeholder="Suite, Street, City" style="width:100%;">
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button type="submit" id="saveCustomer" style="padding:12px 20px;">
+                        <i class="fa-solid fa-check"></i> <span id="saveBtnText">Add Customer</span>
+                    </button>
+                    <button id="cancelCustomerBtn" type="button" style="display:none; background:#6b7280; padding:12px 18px;" onclick="cancelCustomerEdit()">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <input
+            type="text"
+            id="searchCustomer"
+            placeholder="🔍 Search customer name or email..."
+            style="width:320px; padding:12px; margin-bottom:20px; border:1px solid #ccc; border-radius:6px;">
+
+        <div class="card" style="padding: 0; overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th>Customer / Client Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Billing Address</th>
+                        <th style="width: 160px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTable">
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:20px; color:#6b7280;">Loading customers...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/customers.js"></script>
+</body>
+</html>

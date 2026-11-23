@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>📦 INVENTORY SYSTEM</h2>
+
+        <ul>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li class="active"><a href="products.html"><i class="fa-solid fa-box"></i> Products</a></li>
+            <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+            <li><a href="suppliers.html"><i class="fa-solid fa-truck"></i> Suppliers</a></li>
+            <li><a href="customers.html"><i class="fa-solid fa-user-group"></i> Customers</a></li>
+            <li><a href="sales.html"><i class="fa-solid fa-cart-shopping"></i> Sales & Invoices</a></li>
+            <li><a href="purchases.html"><i class="fa-solid fa-dolly"></i> Purchase Orders</a></li>
+            <li><a href="stock.html"><i class="fa-solid fa-warehouse"></i> Stock Movements</a></li>
+            <li><a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header>
+            <h1>Product Management</h1>
+            <p>Add, edit, search and organize inventory products</p>
+        </header>
+
+        <!-- Product Form Card -->
+        <div class="card" style="margin-bottom: 25px;">
+            <h3 id="formTitle" style="margin-bottom: 15px; color:#1f2937;"><i class="fa-solid fa-plus-circle" style="color:#2563eb;"></i> Add New Product</h3>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+
+                <div class="product-form" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">PRODUCT NAME *</label>
+                        <input id="name" type="text" placeholder="e.g. Dell Monitor 24''" required style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">SKU CODE</label>
+                        <input id="sku" type="text" placeholder="e.g. SKU-MON-001" style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">CATEGORY *</label>
+                        <select id="categorySelect" required style="width:100%; padding:12px; border:1px solid #ccc; border-radius:5px; background:white;">
+                            <option value="">-- Select Category --</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">SUPPLIER *</label>
+                        <select id="supplierSelect" required style="width:100%; padding:12px; border:1px solid #ccc; border-radius:5px; background:white;">
+                            <option value="">-- Select Supplier --</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">PURCHASE PRICE (₹) *</label>
+                        <input id="purchase" type="number" step="0.01" min="0" placeholder="0.00" required style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">SELLING PRICE (₹) *</label>
+                        <input id="selling" type="number" step="0.01" min="0" placeholder="0.00" required style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">QUANTITY *</label>
+                        <input id="qty" type="number" min="0" placeholder="Initial stock" required style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">MIN STOCK ALERT</label>
+                        <input id="minStock" type="number" min="0" value="10" placeholder="Low stock threshold" style="width:100%;">
+                    </div>
+
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#4b5563;">UNIT</label>
+                        <input id="unit" type="text" value="pcs" placeholder="pcs, units, kg" style="width:100%;">
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button id="saveBtn" type="submit" style="padding:12px 24px; font-weight:bold;">
+                        <i class="fa-solid fa-check"></i> <span id="saveBtnText">Save Product</span>
+                    </button>
+                    <button id="cancelBtn" type="button" style="display:none; background:#6b7280; padding:12px 20px;" onclick="cancelEdit()">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+            <div style="flex: 1; min-width: 250px;">
+                <input id="search" type="text" placeholder="🔍 Search product name or SKU..." style="width:100%; padding:12px; border:1px solid #ccc; border-radius:6px;">
+            </div>
+
+            <div style="width: 220px;">
+                <select id="filterCategory" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:6px; background:white;">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="card" style="padding: 0; overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Supplier</th>
+                        <th>Purchase</th>
+                        <th>Selling</th>
+                        <th>Profit</th>
+                        <th>Qty</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <tr>
+                        <td colspan="10" style="text-align:center; padding:25px; color:#6b7280;">Loading products from server...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/products.js"></script>
+</body>
+</html>

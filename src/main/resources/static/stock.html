@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management | Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <h2>📦 INVENTORY SYSTEM</h2>
+
+        <ul>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-box"></i> Products</a></li>
+            <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+            <li><a href="suppliers.html"><i class="fa-solid fa-truck"></i> Suppliers</a></li>
+            <li><a href="customers.html"><i class="fa-solid fa-user-group"></i> Customers</a></li>
+            <li><a href="sales.html"><i class="fa-solid fa-cart-shopping"></i> Sales & Invoices</a></li>
+            <li><a href="purchases.html"><i class="fa-solid fa-dolly"></i> Purchase Orders</a></li>
+            <li class="active"><a href="stock.html"><i class="fa-solid fa-warehouse"></i> Stock Movements</a></li>
+            <li><a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+
+        <header>
+            <h1>Stock & Inventory Tracking</h1>
+            <p>Real-time inventory levels, low stock alerts, and audit trail of stock movements</p>
+        </header>
+
+        <!-- Filter Pills -->
+        <div style="display:flex; gap:10px; margin-bottom: 20px;">
+            <button class="filter-pill active" onclick="filterStock('ALL')" style="padding:8px 16px; border-radius:20px; border:1px solid #2563eb; background:#2563eb; color:white; cursor:pointer;">All Products</button>
+            <button class="filter-pill" onclick="filterStock('LOW')" style="padding:8px 16px; border-radius:20px; border:1px solid #d97706; background:#fef3c7; color:#92400e; cursor:pointer;"><i class="fa-solid fa-triangle-exclamation"></i> Low Stock</button>
+            <button class="filter-pill" onclick="filterStock('OUT')" style="padding:8px 16px; border-radius:20px; border:1px solid #dc2626; background:#fee2e2; color:#b91c1c; cursor:pointer;"><i class="fa-solid fa-circle-xmark"></i> Out of Stock</button>
+        </div>
+
+        <!-- Stock Levels Table -->
+        <div class="card" style="padding: 0; overflow-x: auto; margin-bottom: 30px;">
+            <div style="padding: 15px 20px; border-bottom: 1px solid #e5e7eb;">
+                <h3 style="color:#1f2937;"><i class="fa-solid fa-cubes" style="color:#2563eb;"></i> Live Inventory Stock Status</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Available Quantity</th>
+                        <th>Min. Stock Level</th>
+                        <th>Unit</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="stockTable">
+                    <tr>
+                        <td colspan="7" style="text-align:center; padding:20px; color:#6b7280;">Loading inventory levels...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Stock Movements History Table -->
+        <div class="card" style="padding: 0; overflow-x: auto;">
+            <div style="padding: 15px 20px; border-bottom: 1px solid #e5e7eb;">
+                <h3 style="color:#1f2937;"><i class="fa-solid fa-timeline" style="color:#2563eb;"></i> Stock Movement History (Audit Log)</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movement ID</th>
+                        <th>Product Name</th>
+                        <th>Type</th>
+                        <th>Quantity Change</th>
+                        <th>Reference (Invoice / PO)</th>
+                        <th>Timestamp</th>
+                        <th>Logged By</th>
+                    </tr>
+                </thead>
+                <tbody id="movementsTable">
+                    <tr>
+                        <td colspan="7" style="text-align:center; padding:20px; color:#6b7280;">Loading stock movement audit log...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/stock.js"></script>
+</body>
+</html>

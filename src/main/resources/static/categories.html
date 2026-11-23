@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <h2>📦 INVENTORY SYSTEM</h2>
+
+        <ul>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-box"></i> Products</a></li>
+            <li class="active"><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+            <li><a href="suppliers.html"><i class="fa-solid fa-truck"></i> Suppliers</a></li>
+            <li><a href="customers.html"><i class="fa-solid fa-user-group"></i> Customers</a></li>
+            <li><a href="sales.html"><i class="fa-solid fa-cart-shopping"></i> Sales & Invoices</a></li>
+            <li><a href="purchases.html"><i class="fa-solid fa-dolly"></i> Purchase Orders</a></li>
+            <li><a href="stock.html"><i class="fa-solid fa-warehouse"></i> Stock Movements</a></li>
+            <li><a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+
+        <header>
+            <h1>Category Management</h1>
+            <p>Organize products into hierarchical groups and classifications</p>
+        </header>
+
+        <div class="card" style="margin-bottom: 25px;">
+            <h3 id="formTitle" style="margin-bottom: 15px; color:#1f2937;"><i class="fa-solid fa-folder-plus" style="color:#2563eb;"></i> Add New Category</h3>
+            <div class="form" style="grid-template-columns: 1fr 2fr auto auto; gap: 12px; align-items: center;">
+                <input
+                    type="text"
+                    id="categoryName"
+                    placeholder="Category Name *"
+                    required>
+
+                <input
+                    type="text"
+                    id="categoryDesc"
+                    placeholder="Description (optional)">
+
+                <button id="saveCategory" style="padding:12px 20px;">
+                    <i class="fa-solid fa-plus"></i> <span id="saveBtnText">Add Category</span>
+                </button>
+
+                <button id="cancelCategoryBtn" type="button" style="display:none; background:#6b7280; padding:12px 18px;" onclick="cancelCategoryEdit()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+        <div class="card" style="padding: 0; overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th style="width: 160px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="categoryTable">
+                    <tr>
+                        <td colspan="4" style="text-align:center; padding:20px; color:#6b7280;">Loading categories...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/categories.js"></script>
+</body>
+</html>

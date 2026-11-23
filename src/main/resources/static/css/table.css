@@ -1,0 +1,94 @@
+.form{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+margin:20px 0;
+}
+
+.form input{
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.form button{
+background:#2563eb;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:6px;
+}
+
+#search{
+width:300px;
+padding:10px;
+margin-bottom:20px;
+}
+
+button{
+padding:12px;
+}
+
+.delete{
+background:red;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+.edit-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 15px;
+cursor:pointer;
+border-radius:5px;
+margin-right:8px;
+}
+
+.delete-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:8px 15px;
+cursor:pointer;
+border-radius:5px;
+}
+.orange{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.green{
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.red{
+    color:#ef4444;
+    font-weight:bold;
+}
+#preview{
+
+margin-top:10px;
+
+border-radius:8px;
+
+border:2px solid #ddd;
+
+padding:3px;
+
+}
+
+.product-img{
+
+width:60px;
+
+height:60px;
+
+border-radius:8px;
+
+object-fit:cover;
+
+}

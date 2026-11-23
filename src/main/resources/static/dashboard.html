@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>📦 INVENTORY SYSTEM</h2>
+
+        <ul>
+            <li class="active"><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-box"></i> Products</a></li>
+            <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+            <li><a href="suppliers.html"><i class="fa-solid fa-truck"></i> Suppliers</a></li>
+            <li><a href="customers.html"><i class="fa-solid fa-user-group"></i> Customers</a></li>
+            <li><a href="sales.html"><i class="fa-solid fa-cart-shopping"></i> Sales & Invoices</a></li>
+            <li><a href="purchases.html"><i class="fa-solid fa-dolly"></i> Purchase Orders</a></li>
+            <li><a href="stock.html"><i class="fa-solid fa-warehouse"></i> Stock Movements</a></li>
+            <li><a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <header>
+            <h1>Dashboard</h1>
+            <p>Welcome Admin 👋</p>
+        </header>
+
+        <!-- Stats Cards Grid -->
+        <section class="cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="card">
+                <h3><i class="fa-solid fa-box" style="color:#2563eb;"></i> Total Products</h3>
+                <h1 id="totalProducts">0</h1>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-layer-group" style="color:#10b981;"></i> Categories</h3>
+                <h1 id="totalCategories">0</h1>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-truck" style="color:#6366f1;"></i> Suppliers</h3>
+                <h1 id="totalSuppliers">0</h1>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> Low Stock</h3>
+                <h1 id="lowStock" style="color:#d97706;">0</h1>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-receipt" style="color:#0ea5e9;"></i> Total Sales</h3>
+                <h1 id="totalSales">0</h1>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-indian-rupee-sign" style="color:#16a34a;"></i> Total Revenue</h3>
+                <h1 id="totalRevenue" style="color:#16a34a;">₹0</h1>
+            </div>
+        </section>
+
+        <!-- Table Section -->
+        <section class="table-section">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Recent Inventory Products</h2>
+                <a href="products.html" style="color:#2563eb; text-decoration:none; font-size:14px; font-weight:bold;">View All Products <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock Qty</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="recentProductsTable">
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:20px; color:#6b7280;">Loading real inventory data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Recent Sales Section -->
+        <section class="table-section" style="margin-top: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Recent Sales & Invoices</h2>
+                <a href="sales.html" style="color:#2563eb; text-decoration:none; font-size:14px; font-weight:bold;">Create Sale / View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Invoice #</th>
+                        <th>Customer</th>
+                        <th>Total Amount</th>
+                        <th>Sale Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="recentSalesTable">
+                    <tr>
+                        <td colspan="5" style="text-align:center; padding:20px; color:#6b7280;">Loading recent sales...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
